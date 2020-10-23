@@ -17,6 +17,7 @@ export class UsersService {
     }
 
     public async createUser(user: any): Promise<User> {
+        user.statusId = 1;
         console.log("user", user);
         const userToBeSaved = await this.userRepository.save(user);
         if (!userToBeSaved) {

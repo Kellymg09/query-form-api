@@ -17,6 +17,7 @@ export class QueryService {
     ) { }
 
     public async saveQuery(query: any): Promise<Query> {
+        query.rejectMssg = "";
         query.statusId = 1;
         const queryToBeSaved = await this.queryRepository.save(query);
         if (!queryToBeSaved) {
