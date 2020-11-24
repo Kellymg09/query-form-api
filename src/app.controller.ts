@@ -27,6 +27,12 @@ export class AppController {
   }
 
   @UseGuards(JwtAuthGuard)
+  @Post('user')
+  public saveEditUser(@Body() user: any): Promise<any> {
+    return this.userService.editUser(user);
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Get('user/get')
   public getAllUsers(): Promise<any> {
     return this.userService.getAllUsers();

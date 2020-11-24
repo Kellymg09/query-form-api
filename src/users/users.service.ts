@@ -25,6 +25,15 @@ export class UsersService {
         }
         return userToBeSaved;
     }
+    public async editUser(user: any): Promise<User> {
+        user.statusId = 1;
+        console.log("user", user);
+        const userToBeSaved = await this.userRepository.save(user);
+        if (!userToBeSaved) {
+            throw new GenericNotFoundError(userToBeSaved.user, undefined);
+        }
+        return userToBeSaved;
+    }
 
     public async getAllUsers(): Promise<User[]> {
         const allUsers = await this.userRepository.find({});

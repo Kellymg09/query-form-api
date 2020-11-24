@@ -12,4 +12,9 @@ export class UserController {
     public saveUser(@Request() req): Promise<any> {
         return this.userService.createUser(req);
     }
+    @UseGuards(JwtAuthGuard)
+    @Post('/')
+    public saveEditUser(@Request() req): Promise<any> {
+        return this.userService.editUser(req);
+    }
 }

@@ -73,11 +73,11 @@ export class QueryService {
                     var err = error.code;
                     console.log("error: " + err);
                     this.queryError = true;
-                    if (err == 'ER_PARSE_ERROR') {
+                    if (err == 'ER_PARSE_ERROR' || err == 'ETIMEDOUT') {
                         this.typeError = 'SYNTAX_ERROR';
                         console.log("error con la query: " + err);
                     }
-                    else if (err == 'ER_ACCESS_DENIED_ERROR') {
+                    else if (err == 'ER_ACCESS_DENIED_ERROR' || err == 'ENOTFOUND') {
                         this.typeError = 'CONN_ERROR';
                         console.log("error con la conexion: " + err);
                     }
